@@ -121,14 +121,14 @@
     </nav>
 
     <h1>🐕강아지 게임</h1>
-    <p>개똥 1만개 달성 시 사진찍어 카톡 보내면 소정의 선물이 있습니다!</p>
+    <p>개똥 1만개를 수집해보세요!</p>
     
     <button id="clickButton">때찌 버튼</button>
     
     <p>💩개똥: <span id="score">0</span></p>
 
     <!-- 업그레이드 버튼 -->
-    <button id="upgradeButton">🤢싼 똥 다시 먹이기 (개똥: 10개)</button>
+    <button id="upgradeButton">💊영양제 먹이기 (개똥: 10개)</button>
 
     <!-- 배경음악 버튼 -->
     <button id="bgmButton">🎵 음악 켜기/끄기</button>
@@ -169,7 +169,7 @@
             });
              // 🛑 1만 점 달성 시 메시지 출력 (여기에 추가!)
             if (score >= 10000) {
-                alert("당신은 프로 개똥 수집가!😱");
+                alert("당신은 개똥 그 자체!😱");
             }
          });
             
@@ -181,10 +181,10 @@
                 upgradeCost *= 2; // 업그레이드 개똥 증가
 
                 // UI 업데이트
-                upgradeButton.textContent = `🤢싼 똥 다시 먹이기 (개똥: ${upgradeCost}개)`;
+                upgradeButton.textContent = `💊영양제 먹이기 (개똥: ${upgradeCost}개)`;
                 scoreDisplay.textContent = score;
             } else {
-                alert("다시 먹일 개똥이 부족합니다! 😭");
+                alert("개똥이 부족합니다! 😭");
             }
         });
 
