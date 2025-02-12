@@ -13,7 +13,7 @@
             top: 0;
             left: 0;
             width: 100%;
-            background-color: #DDDDDD;
+            background-color: #DDDDDD; /* 노기자카46 보라색 */
             padding: 10px 0;
             text-align: center;
             z-index: 1000;
@@ -46,7 +46,7 @@
         }
 
         h1 {
-            color: #FFFFFF;
+            color: #FFFFFF; /* 진한 보라색 */
             margin-top: 50px;
         }
 
@@ -95,8 +95,11 @@
     
     <p>점수: <span id="score">0</span></p>
 
-    <!-- 동물 소리 추가 -->
-    <audio id="animalSound" src="강아지 울음.mp3"></audio>
+    <!-- 오디오 요소 추가 -->
+    <audio id="dogSound">
+        <source src="강아지 울음.mp3" type="audio/mpeg">
+        브라우저가 오디오 태그를 지원하지 않습니다.
+    </audio>
 
     <script>
         // 점수 변수
@@ -105,20 +108,21 @@
         // 버튼 요소 가져오기
         const clickButton = document.getElementById("clickButton");
         const scoreDisplay = document.getElementById("score");
-        const animalSound = document.getElementById("animalSound");
+        const dogSound = document.getElementById("dogSound"); // 오디오 요소 가져오기
 
         // 버튼 클릭 이벤트 추가
         clickButton.addEventListener("click", function() {
             score++; // 점수 증가
             scoreDisplay.textContent = score; // 화면에 업데이트
-
-            // 동물 소리 재생
-            animalSound.currentTime = 0; // 클릭할 때마다 처음부터 재생
-            animalSound.play();
+            
+            // 소리 재생
+            dogSound.currentTime = 0; // 소리를 처음부터 재생
+            dogSound.play();
         });
     </script>
 
 </body>
 </html>
+
 
 
