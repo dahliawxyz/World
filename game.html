@@ -172,9 +172,25 @@
                 alert("잔인한 동물학대꾼! 결국 강아지를 죽였군요! 당신에겐 선물을 줄 수 없어요! 😱");
                 score = 0;  // 점수 초기화
                 scoreDisplay.textContent = score; // UI 업데이트
-            }
-        });
+                
+                // 공포 분위기로 전환
+                document.body.style.background = "black";  // 배경을 검게 변경
+                document.body.style.color = "red";  // 글씨를 빨갛게 변경
+                document.querySelector("h1").textContent = "당신이 강아지를 죽였어...";
+                document.querySelector("h1").style.fontSize = "40px";
+                document.querySelector("h1").style.fontWeight = "bold";
 
+                // 기존 배경음악 정지하고 공포 BGM으로 변경
+                bgm.pause();
+                bgm.src = "horror.mp3";  // 공포 음악 파일 (horror.mp3 준비해야 함)
+                bgm.load();
+                bgm.play();
+
+                score = 0;  // 점수 초기화
+                scoreDisplay.textContent = score; // UI 업데이트
+               }
+         });
+            
         // 업그레이드 버튼 클릭 이벤트 (클릭당 점수 증가)
         upgradeButton.addEventListener("click", function() {
             if (score >= upgradeCost) {
