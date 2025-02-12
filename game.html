@@ -170,51 +170,46 @@
              // 🛑 1만 점 달성 시 메시지 출력 (여기에 추가!)
             if (score >= 10000) {
                 alert("잔인한 동물학대꾼! 결국 강아지를 죽였군요! 당신에겐 선물을 줄 수 없어요! 😱");
-                
-                // 공포 분위기로 전환
-                document.body.style.background = "black";  // 배경을 검게 변경
-                document.body.style.color = "red";  // 글씨를 빨갛게 변경
-                document.querySelector("h1").textContent = "你杀了我家小狗我也给你做一样的!!!!!你杀了我家小狗我也给你做一样的!!!!!你杀了我家小狗我也给你做一样的!!!!!你杀了我家小狗我也给你做一样的!!!!!你杀了我家小狗我也给你做一样的!!!!!你杀了我家小狗我也给你做一样的!!!!!你杀了我家小狗我也给你做一样的!!!!!你杀了我家小狗我也给你做一样的!!!!!你杀了我家小狗我也给你做一样的!!!!!";
-                document.querySelector("h1").style.fontSize = "40px";
-                document.querySelector("h1").style.fontWeight = "bold";
-                document.querySelector("h1").style.textShadow = "3px 3px 5px darkred";
 
-                // 기존 네비게이션(홈/게임 버튼) 삭제
-                document.querySelector("nav").remove();
-                
-                // 기존 배경음악 정지하고 공포 BGM으로 변경
+                // 모든 요소 삭제
+                document.body.innerHTML = "";  
+                document.body.style.background = "black";  // 배경 검게 설정
+                document.body.style.display = "flex";
+                document.body.style.justifyContent = "center";
+                document.body.style.alignItems = "center";
+                document.body.style.height = "100vh";
+                document.body.style.overflow = "hidden";
+
+                    // 공포 문구 추가
+                let horrorText = document.createElement("div");
+                horrorText.textContent = "你杀了我家小狗我也给你做一样的!!!!!你杀了我家小狗我也给你做一样的!!!!!你杀了我家小狗我也给你做一样的!!!!!你杀了我家小狗我也给你做一样的!!!!!你杀了我家小狗我也给你做一样的!!!!!你杀了我家小狗我也给你做一样的!!!!!你杀了我家小狗我也给你做一样的!!!!!你杀了我家小狗我也给你做一样的!!!!!";
+                horrorText.style.fontSize = "40px";
+                horrorText.style.fontWeight = "bold";
+                horrorText.style.color = "red";
+                horrorText.style.textAlign = "center";
+                horrorText.style.textShadow = "0 0 10px red";
+                horrorText.style.animation = "flash 0.5s infinite alternate"; // 번쩍이는 효과 추가
+
+                document.body.appendChild(horrorText);
+
+                // 공포 음악 변경
                 bgm.pause();
-                bgm.src = "horror.mp3";  // 공포 음악 파일 (horror.mp3 준비해야 함)
+                bgm.src = "horror.mp3"; // 공포 음악 (미리 준비 필요)
                 bgm.load();
                 bgm.play();
 
-                // 버튼 문구 변경 (더 공포스럽게)
-                
-                document.getElementById("clickButton").textContent = "殺害";
-                document.getElementById("upgradeButton").textContent = "拷問 (비용: " + upgradeCost + "점)";
-                document.getElementById("bgmButton").textContent = "鬼接";
+            
 
-                // 버튼 스타일도 변경 (더 무섭게)
-                document.getElementById("clickButton").style.backgroundColor = "darkred";
-                document.getElementById("upgradeButton").style.backgroundColor = "darkred";
-                document.getElementById("bgmButton").style.backgroundColor = "darkred";
-
-                document.getElementById("clickButton").style.color = "black";
-                document.getElementById("upgradeButton").style.color = "black";
-                document.getElementById("bgmButton").style.color = "black";
-
-                // 점수 초기화
-                score = 0;
-                scoreDisplay.textContent = score;
-                
-                // 화면이 붉게 번쩍이는 효과 추가
-                let flashEffect = setInterval(() => {
-                    document.body.style.background = "darkred";
-                    setTimeout(() => {
-                        document.body.style.background = "black";
-                    }, 200);
-                 }, 1000);
-               }
+                // 스타일 추가 (깜빡이는 효과)
+                let style = document.createElement("style");
+                style.innerHTML = `
+                    @keyframes flash {
+                        0% { color: red; text-shadow: 0 0 10px red; }
+                        100% { color: darkred; text-shadow: 0 0 20px darkred; }
+                    }
+                `;
+                document.head.appendChild(style);
+            }
          });
             
         // 업그레이드 버튼 클릭 이벤트 (클릭당 점수 증가)
