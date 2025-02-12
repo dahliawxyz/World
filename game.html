@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>클릭 게임 - 성구의 인터넷세상</title>
     <link rel="stylesheet" href="style.css">
+
     <style>
         /* 네비게이션 메뉴 고정 */
         nav {
@@ -12,7 +13,7 @@
             top: 0;
             left: 0;
             width: 100%;
-            background-color: #DDDDDD; /* nogi46 보라색 */
+            background-color: #DDDDDD; /* 노기자카46 보라색 */
             padding: 10px 0;
             text-align: center;
             z-index: 1000;
@@ -39,28 +40,77 @@
         /* 본문 내용이 네비게이션에 가려지지 않도록 여백 추가 */
         body {
             padding-top: 50px;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #6A0DAD, #ffffff); /* 보라색 -> 흰색 그라데이션 */
         }
 
-        .page {
-            margin-top: 20px;
-            text-align: center;
+        h1 {
+            color: #4B0082; /* 진한 보라색 */
+            margin-top: 50px;
+        }
+
+        p {
+            font-size: 18px;
+        }
+
+        /* 게임 버튼 스타일 */
+        #clickButton {
+            background-color: #6A0DAD;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 20px;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+
+        #clickButton:hover {
+            background-color: #4B0082;
+        }
+
+        /* 점수 표시 스타일 */
+        #score {
+            font-weight: bold;
+            font-size: 24px;
+            color: #4B0082;
         }
     </style>
 </head>
 <body>
+
+    <!-- 네비게이션 메뉴 -->
     <nav>
         <ul>
             <li><a href="index.html">홈</a></li>
             <li><a href="game.html">게임</a></li>
         </ul>
     </nav>
-    
+
     <h1>클릭 게임</h1>
     <p>버튼을 클릭해서 점수를 올려보세요!</p>
+    
     <button id="clickButton">클릭!</button>
+    
     <p>점수: <span id="score">0</span></p>
 
-    <script src="script.js"></script> <!-- 클릭 게임 기능 추가 -->
+    <script>
+        // 점수 변수
+        let score = 0;
+
+        // 버튼 요소 가져오기
+        const clickButton = document.getElementById("clickButton");
+        const scoreDisplay = document.getElementById("score");
+
+        // 버튼 클릭 이벤트 추가
+        clickButton.addEventListener("click", function() {
+            score++; // 점수 증가
+            scoreDisplay.textContent = score; // 화면에 업데이트
+        });
+    </script>
+
 </body>
 </html>
+
 
