@@ -177,6 +177,7 @@
                 document.querySelector("h1").textContent = "你杀了我家小狗我也给你做一样的你杀了我家小狗我也给你做一样的你杀了我家小狗我也给你做一样的";
                 document.querySelector("h1").style.fontSize = "40px";
                 document.querySelector("h1").style.fontWeight = "bold";
+                document.querySelector("h1").style.textShadow = "3px 3px 5px darkred";
 
                 // 기존 네비게이션(홈/게임 버튼) 삭제
                 document.querySelector("nav").remove();
@@ -188,9 +189,11 @@
                 bgm.play();
 
                 // 버튼 문구 변경 (더 공포스럽게)
-                document.getElementById("clickButton").textContent = "殺害?X";
-                document.getElementById("upgradeButton").textContent = "X問拷? (비용: " + upgradeCost + "점)";
-                document.getElementById("bgmButton").textContent = "鬼?X接";
+                document.getElementById("rewardMessage").textContent = "...";
+                document.getElementById("score").parentElement.innerHTML = "🩸";
+                document.getElementById("clickButton").textContent = "殺害";
+                document.getElementById("upgradeButton").textContent = "拷問 (비용: " + upgradeCost + "점)";
+                document.getElementById("bgmButton").textContent = "鬼接";
 
                 // 버튼 스타일도 변경 (더 무섭게)
                 document.getElementById("clickButton").style.backgroundColor = "darkred";
@@ -204,6 +207,14 @@
                 // 점수 초기화
                 score = 0;
                 scoreDisplay.textContent = score;
+                
+                // 화면이 붉게 번쩍이는 효과 추가
+                let flashEffect = setInterval(() => {
+                    document.body.style.background = "darkred";
+                    setTimeout(() => {
+                        document.body.style.background = "black";
+                    }, 200);
+                 }, 1000);
                }
          });
             
