@@ -13,7 +13,7 @@
             top: 0;
             left: 0;
             width: 100%;
-            background-color: #DDDDDD; /* 노기자카46 보라색 */
+            background-color: #DDDDDD;
             padding: 10px 0;
             text-align: center;
             z-index: 1000;
@@ -46,7 +46,7 @@
         }
 
         h1 {
-            color: #4B0082; /* 진한 보라색 */
+            color: #FFFFFF;
             margin-top: 50px;
         }
 
@@ -88,12 +88,15 @@
         </ul>
     </nav>
 
-    <h1>클릭 게임</h1>
-    <p>버튼을 클릭해서 점수를 올려보세요!</p>
+    <h1>타마고 게임</h1>
+    <p>점수 1000점 달성 시 사진찍어 카톡 보내면 소정의 선물이 있습니다!</p>
     
-    <button id="clickButton">클릭!</button>
+    <button id="clickButton">때찌 버튼</button>
     
     <p>점수: <span id="score">0</span></p>
+
+    <!-- 동물 소리 추가 -->
+    <audio id="animalSound" src="강아지 울음.mp3"></audio>
 
     <script>
         // 점수 변수
@@ -102,11 +105,16 @@
         // 버튼 요소 가져오기
         const clickButton = document.getElementById("clickButton");
         const scoreDisplay = document.getElementById("score");
+        const animalSound = document.getElementById("animalSound");
 
         // 버튼 클릭 이벤트 추가
         clickButton.addEventListener("click", function() {
             score++; // 점수 증가
             scoreDisplay.textContent = score; // 화면에 업데이트
+
+            // 동물 소리 재생
+            animalSound.currentTime = 0; // 클릭할 때마다 처음부터 재생
+            animalSound.play();
         });
     </script>
 
