@@ -178,14 +178,32 @@
                 document.querySelector("h1").style.fontSize = "40px";
                 document.querySelector("h1").style.fontWeight = "bold";
 
+                // 기존 네비게이션(홈/게임 버튼) 삭제
+                document.querySelector("nav").remove();
+                
                 // 기존 배경음악 정지하고 공포 BGM으로 변경
                 bgm.pause();
                 bgm.src = "horror.mp3";  // 공포 음악 파일 (horror.mp3 준비해야 함)
                 bgm.load();
                 bgm.play();
 
-                score = 0;  // 점수 초기화
-                scoreDisplay.textContent = score; // UI 업데이트
+                // 버튼 문구 변경 (더 공포스럽게)
+                document.getElementById("clickButton").textContent = "殺害?X";
+                document.getElementById("upgradeButton").textContent = "X問拷? (비용: " + upgradeCost + "점)";
+                document.getElementById("bgmButton").textContent = "鬼?X接";
+
+                // 버튼 스타일도 변경 (더 무섭게)
+                document.getElementById("clickButton").style.backgroundColor = "darkred";
+                document.getElementById("upgradeButton").style.backgroundColor = "darkred";
+                document.getElementById("bgmButton").style.backgroundColor = "darkred";
+
+                document.getElementById("clickButton").style.color = "black";
+                document.getElementById("upgradeButton").style.color = "black";
+                document.getElementById("bgmButton").style.color = "black";
+
+                // 점수 초기화
+                score = 0;
+                scoreDisplay.textContent = score;
                }
          });
             
