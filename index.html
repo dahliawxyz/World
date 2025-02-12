@@ -3,28 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>나만의 웹사이트</title>
-    <link rel="stylesheet" href="style.css">
+    <title>성구의 인터넷세상</title>
+    <link rel="stylesheet" href="style.css">  <!-- 스타일시트 연결 -->
 </head>
 <body>
-    <!-- 네비게이션 바 -->
+    <!-- 네비게이션 메뉴 -->
     <nav>
         <ul>
-            <li><a href="#">홈</a></li>
-            <li><a href="#">소개</a></li>
-            <li><a href="#">연락처</a></li>
+            <li><a href="#" onclick="showPage('home')">홈</a></li>
+            <li><a href="#" onclick="showPage('game')">게임</a></li>
+            <li><a href="#" onclick="showPage('address')">연락처</a></li>
         </ul>
     </nav>
 
     <!-- 메인 콘텐츠 -->
-    <h1>권성구의 인터넷세상🎉</h1>
-    <p>version α</p>
+    <h1>성구의 인터넷세상</h1>
 
     <!-- 버튼 -->
-    <button onclick="alertMessage()">눌러봐!</button>
+    <button onclick="alertMessage()">응원의 말!</button>
 
     <!-- 메인 콘텐츠 -->
     <p>2025년 2월 12일 사이트 개설 (version α) </p>
+
+    
+    <!-- 페이지 내용 -->
+    <div id="content">
+        <div id="home" class="page">환영합니다! 여기는 Jace's World입니다.</div>
+        <div id="contact" class="page">연락처 페이지입니다. 이메일: example@email.com</div>
+        <div id="game" class="page">
+            <h2>타마고 게임</h2>
+            <p>아래 버튼을 클릭해서 점수를 올려보세요!</p>
+            <button id="clickButton">클릭!</button>
+            <p>점수: <span id="score">0</span></p>
+        </div>
+    </div>
 
     <!-- JavaScript 연결 -->
     <script src="script.js"></script>
