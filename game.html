@@ -54,12 +54,12 @@
             font-size: 18px;
         }
 
-        /* 게임 버튼 스타일 */
+        /* 때찌 버튼 스타일 */
         #clickButton {
             background-color: #6A0DAD;
             color: white;
             border: none;
-            padding: 15px 30px;
+            padding: 90px 60px;
             font-size: 20px;
             cursor: pointer;
             border-radius: 10px;
@@ -116,7 +116,7 @@
     <nav>
         <ul>
             <li><a href="index.html">홈</a></li>
-            <li><a href="game.html">강아지 게임</a></li>
+            <li><a href="game.html">🐕게임</a></li>
         </ul>
     </nav>
 
@@ -128,7 +128,7 @@
     <p>💩개똥: <span id="score">0</span></p>
 
     <!-- 업그레이드 버튼 -->
-    <button id="upgradeButton">💉관장액 주입 (개똥: 10개)</button>
+    <button id="upgradeButton">🤢싼 똥 다시 먹이기 (개똥: 10개)</button>
 
     <!-- 배경음악 버튼 -->
     <button id="bgmButton">🎵 음악 켜기/끄기</button>
@@ -169,7 +169,7 @@
             });
              // 🛑 1만 점 달성 시 메시지 출력 (여기에 추가!)
             if (score >= 10000) {
-                alert("잔인한 동물학대꾼! 결국 강아지를 죽였군요! 당신은 살인마! 😱");
+                alert("당신은 프로 개똥 수집가!😱");
             }
          });
             
@@ -181,10 +181,10 @@
                 upgradeCost *= 2; // 업그레이드 개똥 증가
 
                 // UI 업데이트
-                upgradeButton.textContent = `💉관장액 주입 (개똥: ${upgradeCost}점)`;
+                upgradeButton.textContent = `🤢싼 똥 다시 먹이기 (개똥: ${upgradeCost}점)`;
                 scoreDisplay.textContent = score;
             } else {
-                alert("개똥이 부족합니다! 😭");
+                alert("다시 먹일 개똥이 부족합니다! 😭");
             }
         });
 
