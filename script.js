@@ -1,3 +1,5 @@
 function alertMessage() {
-    alert("Hello! 나만의 웹사이트에 오신 걸 환영합니다!");
+    const messages = ["환영합니다!😊", "오늘도 좋은 하루!", "갓생! 🚀"];
+    const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+    alert(randomMessage);
 }
