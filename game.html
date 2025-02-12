@@ -5,6 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>클릭 게임 - 성구의 인터넷세상</title>
     <link rel="stylesheet" href="style.css">
+
+
+    <style>
+        /* 네비게이션 메뉴 고정 */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #DDDDDD; /* nogi46 보라색 */
+            padding: 10px 0;
+            text-align: center;
+            z-index: 1000;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        /* 본문 내용이 네비게이션에 가려지지 않도록 여백 추가 */
+        body {
+            padding-top: 50px;
+        }
+
+        .page {
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
     <nav>
