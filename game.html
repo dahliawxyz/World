@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>타마고 게임</title>
+    <title>강아지 게임</title>
     <link rel="stylesheet" href="style.css">
 
     <style>
@@ -121,17 +121,17 @@
     </nav>
 
     <h1>타마고 게임</h1>
-    <p>점수 1만점 달성 시 사진찍어 카톡 보내면 소정의 선물이 있습니다!</p>
+    <p>개똥 1만개 달성 시 사진찍어 카톡 보내면 소정의 선물이 있습니다!</p>
     
     <button id="clickButton">때찌 버튼</button>
     
-    <p>점수: <span id="score">0</span></p>
+    <p>개똥: <span id="score">0</span></p>
 
     <!-- 업그레이드 버튼 -->
-    <button id="upgradeButton">업그레이드 (비용: 10점)</button>
+    <button id="upgradeButton">업그레이드 (개똥: 10점)</button>
 
     <!-- 배경음악 버튼 -->
-    <button id="bgmButton">🎵 음악 켜기</button>
+    <button id="bgmButton">🎵 음악 켜기/끄기</button>
 
     <!-- 강아지 소리 -->
     <audio id="dogSound">
@@ -144,61 +144,61 @@
     </audio>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            let score = 0;
-            let clickPower = 1;  // 클릭당 점수 (업그레이드 시 증가)
-            let upgradeCost = 10;
+        // 점수 변수
+        let score = 0;
+        let clickPower = 1;  // 클릭당 점수 (업그레이드 시 증가)
+        let upgradeCost = 10;
 
-            // 요소 가져오기
-            const clickButton = document.getElementById("clickButton");
-            const scoreDisplay = document.getElementById("score");
-            const dogSound = document.getElementById("dogSound");
-            const upgradeButton = document.getElementById("upgradeButton");
-            const bgmButton = document.getElementById("bgmButton");
-            const bgm = document.getElementById("bgm");
+        // 요소 가져오기
+        const clickButton = document.getElementById("clickButton");
+        const scoreDisplay = document.getElementById("score");
+        const dogSound = document.getElementById("dogSound");
+        const upgradeButton = document.getElementById("upgradeButton");
+        const bgmButton = document.getElementById("bgmButton");
+        const bgm = document.getElementById("bgm");
 
-            // 버튼 클릭 이벤트 (점수 증가 + 강아지 소리)
-            clickButton.addEventListener("click", function() {
-                score += clickPower;
+        // 버튼 클릭 이벤트 (점수 증가 + 강아지 소리)
+        clickButton.addEventListener("click", function() {
+            score += clickPower;
+            scoreDisplay.textContent = score;
+
+            // 강아지 소리 재생 (연속 재생 가능하도록)
+            dogSound.currentTime = 0;
+            dogSound.play().catch(error => {
+                console.log("오디오 재생 실패:", error);
+            });
+        });
+
+        // 업그레이드 버튼 클릭 이벤트 (클릭당 점수 증가)
+        upgradeButton.addEventListener("click", function() {
+            if (score >= upgradeCost) {
+                score -= upgradeCost;
+                clickPower++; // 클릭당 개똥 증가
+                upgradeCost *= 2; // 업그레이드 개똥 증가
+
+                // UI 업데이트
+                upgradeButton.textContent = `업그레이드 (개똥: ${upgradeCost}점)`;
                 scoreDisplay.textContent = score;
+            } else {
+                alert("개똥이 부족합니다! 😭");
+            }
+        });
 
-                // 강아지 소리 재생 (연속 재생 가능하도록)
-                dogSound.currentTime = 0;
-                dogSound.play().catch(error => {
-                    console.log("오디오 재생 실패:", error);
-                });
-            });
-
-            // 업그레이드 버튼 클릭 이벤트 (클릭당 점수 증가)
-            upgradeButton.addEventListener("click", function() {
-                if (score >= upgradeCost) {
-                    score -= upgradeCost;
-                    clickPower++; // 클릭당 점수 증가
-                    upgradeCost *= 2; // 업그레이드 비용 증가
-
-                    // UI 업데이트
-                    upgradeButton.textContent = `업그레이드 (비용: ${upgradeCost}점)`;
-                    scoreDisplay.textContent = score;
-                } else {
-                    alert("점수가 부족합니다! 😭");
-                }
-            });
-
-            // 배경음악 컨트롤 버튼
-            bgmButton.addEventListener("click", function() {
-                if (bgm.paused) {
-                    bgm.play();
-                    bgmButton.textContent = "🔇 음악 끄기";
-                } else {
-                    bgm.pause();
-                    bgmButton.textContent = "🎵 음악 켜기";
-                }
-            });
+        // 배경음악 컨트롤 버튼
+        bgmButton.addEventListener("click", function() {
+            if (bgm.paused) {
+                bgm.play();
+                bgmButton.textContent = "🔇 음악 끄기";
+            } else {
+                bgm.pause();
+                bgmButton.textContent = "🎵 음악 켜기";
+            }
         });
     </script>
 
 </body>
 </html>
+
 
 
 
