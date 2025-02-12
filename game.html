@@ -76,6 +76,38 @@
             font-size: 24px;
             color: #4B0082;
         }
+
+        /* 업그레이드 버튼 스타일 */
+        #upgradeButton {
+            background-color: #FFD700;
+            color: black;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+
+        #upgradeButton:hover {
+            background-color: #FFA500;
+        }
+
+        /* 배경음악 버튼 스타일 */
+        #bgmButton {
+            background-color: #008CBA;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+
+        #bgmButton:hover {
+            background-color: #005F73;
+        }
     </style>
 </head>
 <body>
@@ -95,30 +127,72 @@
     
     <p>점수: <span id="score">0</span></p>
 
-    <!-- 오디오 요소 추가 -->
+    <!-- 업그레이드 버튼 -->
+    <button id="upgradeButton">업그레이드 (비용: 10점)</button>
+
+    <!-- 배경음악 버튼 -->
+    <button id="bgmButton">🎵 음악 켜기/끄기</button>
+
+    <!-- 강아지 소리 -->
     <audio id="dogSound">
         <source src="puppy1.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- 배경음악 -->
+    <audio id="bgm" loop>
+        <source src="bgm.mp3" type="audio/mpeg">
     </audio>
 
     <script>
         // 점수 변수
         let score = 0;
+        let clickPower = 1;  // 클릭당 점수 (업그레이드 시 증가)
+        let upgradeCost = 10;
 
-        // 버튼 요소 가져오기
+        // 요소 가져오기
         const clickButton = document.getElementById("clickButton");
         const scoreDisplay = document.getElementById("score");
-        const dogSound = document.getElementById("dogSound"); // 오디오 요소 가져오기
+        const dogSound = document.getElementById("dogSound");
+        const upgradeButton = document.getElementById("upgradeButton");
+        const bgmButton = document.getElementById("bgmButton");
+        const bgm = document.getElementById("bgm");
 
-        // 버튼 클릭 이벤트 추가
+        // 버튼 클릭 이벤트 (점수 증가 + 강아지 소리)
         clickButton.addEventListener("click", function() {
-            score++; // 점수 증가
-            scoreDisplay.textContent = score; // 화면에 업데이트
-            
-            // 오디오 재생 시도 (브라우저 정책 우회)
+            score += clickPower;
+            scoreDisplay.textContent = score;
+
+            // 강아지 소리 재생 (연속 재생 가능하도록)
             dogSound.currentTime = 0;
             dogSound.play().catch(error => {
                 console.log("오디오 재생 실패:", error);
             });
+        });
+
+        // 업그레이드 버튼 클릭 이벤트 (클릭당 점수 증가)
+        upgradeButton.addEventListener("click", function() {
+            if (score >= upgradeCost) {
+                score -= upgradeCost;
+                clickPower++; // 클릭당 점수 증가
+                upgradeCost *= 2; // 업그레이드 비용 증가
+
+                // UI 업데이트
+                upgradeButton.textContent = `업그레이드 (비용: ${upgradeCost}점)`;
+                scoreDisplay.textContent = score;
+            } else {
+                alert("점수가 부족합니다! 😭");
+            }
+        });
+
+        // 배경음악 컨트롤 버튼
+        bgmButton.addEventListener("click", function() {
+            if (bgm.paused) {
+                bgm.play();
+                bgmButton.textContent = "🔇 음악 끄기";
+            } else {
+                bgm.pause();
+                bgmButton.textContent = "🎵 음악 켜기";
+            }
         });
     </script>
 
