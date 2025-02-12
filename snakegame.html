@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스네이크 게임</title>
+</head>
+<body>
+    <h1>스네이크 게임</h1>
+    <canvas id="gameCanvas" width="400" height="400" style="border: 1px solid black;"></canvas>
+
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+
+        const gridSize = 20;
+        const canvasSize = 400;
+
+        let snake = [{ x: 160, y: 160 }];
+        let direction = 'RIGHT';
+        let food = { x: 80, y: 80 };
+        let score = 0;
+
+        // 게임 화면 그리기
+        function draw() {
+            ctx.clearRect(0, 0, canvasSize, canvasSize);
+
+            // 스네이크 그리기
+            for (let i = 0; i < snake.length; i++) {
+                ctx.fillStyle = i === 0 ? 'green' : 'lightgreen';
+                ctx.fillRect(snake[i].x, snake[i].y, gridSize, gridSize);
+            }
+
+            // 음식 그리기
+            ctx.fillStyle = 'red';
+            ctx.fillRect(food.x, food.y, gridSize, gridSize);
+
+            // 점수 그리기
+            ctx.fillStyle = 'black';
+            ctx.font = '20px Arial';
+            ctx.fillText('점수: ' + score, 10, 20);
+        }
+
+        // 스네이크 이동
+        function moveSnake() {
+            const head = { ...snake[0] };
+
+            switch (direction) {
+                case 'UP':
+                    head.y -= gridSize;
+                    break;
+                case 'DOWN':
+                    head.y += gridSize;
+                    break;
+                case 'LEFT':
+                    head.x -= gridSize;
+                    break;
+                case 'RIGHT':
+                    head.x += gridSize;
+                    break;
+            }
+
+            snake.unshift(head);
+
+            if (head.x === food.x && head.y === food.y) {
+                score++;
+                generateFood();
+            } else {
+                snake.pop();
+            }
+        }
+
+        // 음식 생성
+        function generateFood() {
+            const x = Math.floor(Math.random() * (canvasSize / gridSize)) * gridSize;
+            const y = Math.floor(Math.random() * (canvasSize / gridSize)) * gridSize;
+            food = { x, y };
+        }
+
+        // 충돌 검사
+        function checkCollision() {
+            const head = snake[0];
+
+            // 벽 충돌
+            if (head.x < 0 || head.x >= canvasSize || head.y < 0 || head.y >= canvasSize) {
+                resetGame();
+            }
+
+            // 자기 자신 충돌
+            for (let i = 1; i < snake.length; i++) {
+                if (head.x === snake[i].x && head.y === snake[i].y) {
+                    resetGame();
+                }
+            }
+        }
+
+        // 게임 리셋
+        function resetGame() {
+            snake = [{ x: 160, y: 160 }];
+            direction = 'RIGHT';
+            score = 0;
+            generateFood();
+        }
+
+        // 방향 변경
+        function changeDirection(event) {
+            switch (event.key) {
+                case 'ArrowUp':
+                    if (direction !== 'DOWN') direction = 'UP';
+                    break;
+                case 'ArrowDown':
+                    if (direction !== 'UP') direction = 'DOWN';
+                    break;
+                case 'ArrowLeft':
+                    if (direction !== 'RIGHT') direction = 'LEFT';
+                    break;
+                case 'ArrowRight':
+                    if (direction !== 'LEFT') direction = 'RIGHT';
+                    break;
+            }
+        }
+
+        // 게임 루프
+        function gameLoop() {
+            moveSnake();
+            checkCollision();
+            draw();
+        }
+
+        document.addEventListener('keydown', changeDirection);
+
+        generateFood();
+        setInterval(gameLoop, 100);
+    </script>
+</body>
+</html>
