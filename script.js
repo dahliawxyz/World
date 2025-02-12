@@ -5,6 +5,7 @@ function alertMessage() {
 }
 
 
+// 클릭 게임 기능
 let score = 0; // 초기 점수
 
 // 버튼 클릭하면 점수 증가
