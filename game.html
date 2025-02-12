@@ -13,7 +13,7 @@
             top: 0;
             left: 0;
             width: 100%;
-            background-color: #DDDDDD; /* 노기자카46 보라색 */
+            background-color: #DDDDDD;
             padding: 10px 0;
             text-align: center;
             z-index: 1000;
@@ -42,11 +42,11 @@
             padding-top: 50px;
             text-align: center;
             font-family: Arial, sans-serif;
-            background: linear-gradient(to bottom, #6A0DAD, #ffffff); /* 보라색 -> 흰색 그라데이션 */
+            background: linear-gradient(to bottom, #6A0DAD, #ffffff);
         }
 
         h1 {
-            color: #FFFFFF; /* 진한 보라색 */
+            color: #FFFFFF;
             margin-top: 50px;
         }
 
@@ -114,14 +114,17 @@
             score++; // 점수 증가
             scoreDisplay.textContent = score; // 화면에 업데이트
             
-            // 소리 재생
-            dogSound.currentTime = 0; // 소리를 처음부터 재생
-            dogSound.play();
+            // 오디오 재생 시도 (브라우저 정책 우회)
+            dogSound.currentTime = 0;
+            dogSound.play().catch(error => {
+                console.log("오디오 재생 실패:", error);
+            });
         });
     </script>
 
 </body>
 </html>
+
 
 
 
