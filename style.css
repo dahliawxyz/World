@@ -1,8 +1,6 @@
 body {
     font-family: 'Arial', sans-serif;
     text-align: center;
-    background-image: url('https://source.unsplash.com/random/1600x900'); /* 랜덤 배경 */
-    background-size: cover;
     color: white;
     padding: 20px;
 }
