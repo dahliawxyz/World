@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Welcome</title>
+<link rel="stylesheet" href="style.css">
+<style>
+body{background-color:black; background-size:cover; }
+.c{color:white;}
+#a{font-size:70px;}
+#b{font-size:15px; font-height: 700}
+</style>
+</head>
+<body>
+<div class="c">
+<h1 id="a">Welcome</h1>
+<h5 id="b">Warning : This webpage contains EXTREMELY harmful contents. If you want to keep viewing, Click this button<h5>
+</div>
+<p></p><p></p>
+<button>Enter</button>
+</body>
+</html>
