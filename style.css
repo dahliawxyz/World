@@ -11,7 +11,8 @@ h1 {
 button {
     padding: 12px 24px;
     font-size: 18px;
-    background-color: #ff5733;
+    font-weight:700
+    background-color: #ccabd8;
     color: white;
     border: none;
     border-radius: 10px;
@@ -26,7 +27,7 @@ button:hover {
 nav ul {
     display: flex;
     justify-content: center;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.8);
     padding: 10px;
     list-style: none;
 }
@@ -44,6 +45,7 @@ nav ul li a:hover {
     background-color: white;
     color: black;
     border-radius: 5px;
+    transform: scale(1.1);
 }
 /* 배경을 46 스타일 보라색 그라데이션으로 변경 */
 body {
